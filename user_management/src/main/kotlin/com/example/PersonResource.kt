@@ -5,10 +5,14 @@ import javax.ws.rs.Path
 import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 
-@Path("/hello")
-class ExampleResource {
+@Path("/persons")
+class PersonsResource {
+
+    //TODO: add remaining rest methods
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    fun hello() = "Hello from RESTEasy Reactive"
+    fun getPersons(): List<Person> {
+        return listOf()
+    }
 }
