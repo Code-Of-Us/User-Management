@@ -53,7 +53,7 @@ class PersonsResource(val personRepository: PersonRepository){
     @GET
     @Path("/search")
     @Produces(MediaType.APPLICATION_JSON)
-    fun findByOriginCountry(
+    fun findByRegistrationPlate(
         @QueryParam(value = "registration") registration: String
     ): Response = Response.ok(personRepository.findByRegistration(registration)).build()
 
