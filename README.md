@@ -1,4 +1,4 @@
-# user_management
+# learning-quarkus
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
@@ -49,18 +49,18 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 ./gradlew build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
 ```
 
-You can then execute your native executable with: `./build/user_management-1.0-SNAPSHOT-runner`
+You can then execute your native executable with: `./build/learning-quarkus-1.0-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.
 
 ## Related Guides
 
+- REST resources for Hibernate ORM with Panache ([guide](https://quarkus.io/guides/rest-data-panache)): Generate JAX-RS
+  resources for your Hibernate Panache entities and repositories
 - RESTEasy Reactive ([guide](https://quarkus.io/guides/resteasy-reactive)): A JAX-RS implementation utilizing build time
   processing and Vert.x. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions
   that depend on it.
 - Kotlin ([guide](https://quarkus.io/guides/kotlin)): Write your services in Kotlin
-- Security JPA ([guide](https://quarkus.io/guides/security-getting-started)): Secure your applications with
-  username/password stored in a database via JPA
 - JDBC Driver - PostgreSQL ([guide](https://quarkus.io/guides/datasource)): Connect to the PostgreSQL database via JDBC
 
 ## Provided Code

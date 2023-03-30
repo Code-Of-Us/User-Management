@@ -10,11 +10,11 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.native-micro -t quarkus/user_management .
+# docker build -f src/main/docker/Dockerfile.native-micro -t quarkus/learning-quarkus .
 #
 # Then run the container using:
 #
-# docker run -i --rm -p 8080:8080 quarkus/user_management
+# docker run -i --rm -p 8080:8080 quarkus/learning-quarkus
 #
 ###
 FROM quay.io/quarkus/quarkus-micro-image:2.0
