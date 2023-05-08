@@ -10,7 +10,7 @@ repositories {
 }
 
 var lombokVersion = "1.18.22"
-var mapstructVersion = "1.4.2."
+var mapstructVersion = "1.3.1."
 
 val quarkusPlatformGroupId: String by project
 val quarkusPlatformArtifactId: String by project
@@ -32,6 +32,9 @@ dependencies {
     implementation("com.github.fmcejudo:quarkus-eureka:0.0.14")
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.rest-assured:rest-assured")
+
+    annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+    annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}Final")
 }
 
 group = "com.example"

@@ -16,6 +16,8 @@ class PersonsResource(val personRepository: PersonRepository) {
     @LoadBalanced(type = LoadBalancerType.ROUND_ROBIN)
     lateinit var personClient: EurekaClient
 
+    var personMapper: PersonMapper = PersonMapperImpl()
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     fun getAllPersons(): Response = Response.ok(personRepository.listAll()).build()
@@ -24,7 +26,8 @@ class PersonsResource(val personRepository: PersonRepository) {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
-    fun addPerson(person: Person): Response {
+    fun addPerson(personDto: PersonDto): Response {
+        var person: Person = personMapper.toPerson(personDto)
         personRepository.persist(person)
         return Response.ok(person).status(201).build()
     }
@@ -46,25 +49,24 @@ class PersonsResource(val personRepository: PersonRepository) {
     @Produces(MediaType.APPLICATION_JSON)
     fun update(person: Person, @PathParam("id") id: Long): Response {
         personRepository.update(
-            "" +
                     "firstName = ${person.firstName}, " +
-                    "lastName = '${person.lastName}', " +
-                    "registration = ${person.registration}, " +
-                    "where id = $id"
+                    "lastName = ${person.lastName}, " +
+                    "registration = ${person.registration}" + " " +
+                    "WHERE personid = $id"
         )
-        return Response.ok(personRepository.findById(id)).build()
+        return Response.ok(personMapper.toPersonDto(personRepository.findById(id))).build()
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    fun getPerson(@PathParam("id") id: Long): Response = Response.ok(personRepository.findById(id)).build()
+    fun getPerson(@PathParam("id") id: Long): Response = Response.ok(personMapper.toPersonDto(personRepository.findById(id))).build()
 
     @GET
     @Path("/search")
     @Produces(MediaType.APPLICATION_JSON)
     fun findByRegistrationPlate(
         @QueryParam(value = "registration") registration: String
-    ): Response = Response.ok(personRepository.findByRegistration(registration)).build()
+    ): Response = Response.ok(personMapper.toPersonDto(personRepository.findByRegistration(registration))).build()
 
 }

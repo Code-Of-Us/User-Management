@@ -6,6 +6,6 @@ import javax.enterprise.context.ApplicationScoped
 @ApplicationScoped
 class PersonRepository : PanacheRepository<Person> {
 
-    fun findByRegistration(registration: String) = list("registration = '$registration'")
+    fun findByRegistration(registration: String) = Person("registration = '$registration'")
 
 }
