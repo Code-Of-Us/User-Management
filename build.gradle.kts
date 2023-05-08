@@ -9,6 +9,9 @@ repositories {
     mavenLocal()
 }
 
+var lombokVersion = "1.18.22"
+var mapstructVersion = "1.4.2."
+
 val quarkusPlatformGroupId: String by project
 val quarkusPlatformArtifactId: String by project
 val quarkusPlatformVersion: String by project
@@ -22,6 +25,9 @@ dependencies {
     implementation("io.quarkus:quarkus-jdbc-postgresql")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("io.quarkus:quarkus-arc")
+    implementation("org.projectlombok:lombok:$lombokVersion")
+    implementation("org.mapstruct:mapstruct:${mapstructVersion}Final")
+    implementation("org.mapstruct:mapstruct-processor:${mapstructVersion}Final")
     implementation("io.quarkus:quarkus-smallrye-health")
     implementation("com.github.fmcejudo:quarkus-eureka:0.0.14")
     testImplementation("io.quarkus:quarkus-junit5")

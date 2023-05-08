@@ -18,10 +18,7 @@ class PersonsResource(val personRepository: PersonRepository) {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    fun getAllPersons(): Response = personClient.app("user-service")
-        .path("/q/health")
-        .request(MediaType.APPLICATION_JSON_TYPE)
-        .get()
+    fun getAllPersons(): Response = Response.ok(personRepository.listAll()).build()
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
